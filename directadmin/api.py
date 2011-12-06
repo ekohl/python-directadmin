@@ -478,7 +478,7 @@ class ApiConnector(object):
         self._password = password
         self._https = bool(https)
 
-    def execute(self, cmd, parameters=None):
+    def execute(self, cmd, parameters=None, get=None):
         """Execute command
 
         Executes a command of the API
@@ -487,11 +487,17 @@ class ApiConnector(object):
         Parameters:
         cmd = command name
         parameters = list of tuples with parameters (default: None)
+        get = list of tuples or dict with get parameters (default: None)
         """
+        url = self._get_url(cmd)
+
+        if get:
+            url += '?' + urllib.urlencode(get)
+
         if parameters is not None:
             parameters = urllib.urlencode(parameters)
 
-        request = urllib2.Request(self._get_url(cmd), parameters)
+        request = urllib2.Request(url, parameters)
 
         # Directadmin's API requires Basic HTTP Authentication
         base_auth = base64.b64encode("%s:%s" % \
@@ -598,12 +604,12 @@ class Api(object):
                                        port, \
                                        https)
 
-    def _execute_cmd(self, cmd, parameters=None):
+    def _execute_cmd(self, cmd, parameters=None, get=None):
         """Execute command
 
         Executes a command using the Connection object
         """
-        return self._connector.execute(cmd, parameters)
+        return self._connector.execute(cmd, parameters, get)
 
     def _yes_no(self, b):
         """Translates a boolean to "yes"/"no" """
