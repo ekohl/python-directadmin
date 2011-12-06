@@ -753,7 +753,7 @@ class Api(object):
     def suspend_account(self, user):
         """Suspend account
 
-        Implements command CMD_API_SELEC_USERS
+        Implements command CMD_API_SELECT_USERS
 
         Suspends an account of *ANY* type
 
@@ -766,7 +766,7 @@ class Api(object):
     def suspend_accounts(self, users):
         """Suspend accounts
 
-        Implements command CMD_API_SELEC_USERS
+        Implements command CMD_API_SELECT_USERS
 
         Suspends a list of accounts of *ANY* type
 
@@ -779,7 +779,7 @@ class Api(object):
     def unsuspend_account(self, user):
         """Unsuspend account
 
-        Implements command CMD_API_SELEC_USERS
+        Implements command CMD_API_SELECT_USERS
 
         Unsuspends an account of *ANY* type
 
@@ -792,7 +792,7 @@ class Api(object):
     def unsuspend_accounts(self, users):
         """Unsuspend accounts
 
-        Implements command CMD_API_SELEC_USERS
+        Implements command CMD_API_SELECT_USERS
 
         Unsuspends a list of accounts of *ANY* type
 
