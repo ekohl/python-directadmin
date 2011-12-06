@@ -818,7 +818,7 @@ class Api(object):
         parameters = [('evalue', email), \
                       ('domain', domain), \
                       ('email', 'Save')]
-        return self._execute_cmd("CMD_APÎ_CHANGE_INFO", parameters)
+        return self._execute_cmd("CMD_API_CHANGE_INFO", parameters)
 
     def list_all_users(self):
         """List All Users
