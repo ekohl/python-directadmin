@@ -110,21 +110,21 @@ class ResellerUser (User):
     Usage:
 
     # Define a Reseller with a Reseller Package
-    reseller = ResellerUser('username', 
-                            'email@domain.com', 
-                            'password', 
-                            'domain.com', 
-                            'package_1', 
+    reseller = ResellerUser('username',
+                            'email@domain.com',
+                            'password',
+                            'domain.com',
+                            'package_1',
                             'shared')
 
     OR
 
     # Define a Reseller with a custom configuration
-    reseller = ResellerUser('username', 
-                            'email@domain.com', 
-                            'password', 
-                            'domain.com', 
-                            None, 
+    reseller = ResellerUser('username',
+                            'email@domain.com',
+                            'password',
+                            'domain.com',
+                            None,
                             'shared')
     reseller['bandwidth'] = 1024
     reseller['ubandwidth'] = "OFF"
@@ -140,7 +140,7 @@ class ResellerUser (User):
         ip              -- shared or assign. If shared, domain will use the
                            server's main ip. assign will use one of the reseller's ips
                            (default: shared)
-        
+
         bandwidth       -- Amount of bandwidth Reseller will be allowed to use.
                            Number, in Megabytes
         ubandwidth      -- ON or OFF. If ON, bandwidth is ignored and no limit is set
@@ -228,43 +228,43 @@ class ResellerUser (User):
 
     def _get_default_config (self):
         """Get dafault config
-        
+
         Returns a dictionary with the default
         configuration for a reseller user
         """
         return {'bandwidth': 0,
                 'ubandwidth': "OFF",
                 'quota': 0,
-                'uquota': "OFF", 
-                'vdomains': 0, 
-                'uvdomains': "OFF", 
-                'nsubdomains': 0, 
-                'unsubdomains': "OFF", 
-                'ips': 0, 
-                'nemails': 0, 
-                'unemails': "OFF", 
-                'nemailf': 0, 
-                'unemailf': "OFF", 
-                'nemailml': 0, 
-                'unemailml': "OFF", 
-                'nemailr': 0, 
-                'unemailr': "OFF", 
-                'mysql': 0, 
-                'umysql': "OFF", 
-                'domainptr': 0, 
-                'udomainptr': "OFF", 
-                'ftp': 0, 
-                'uftp': "OFF", 
-                'aftp': "OFF", 
-                'php': "ON", 
-                'cgi': "ON", 
-                'ssl': "OFF", 
-                'ssh': "OFF", 
-                'userssh': "OFF", 
-                'dnscontrol': "OFF", 
-                'dns': "OFF", 
+                'uquota': "OFF",
+                'vdomains': 0,
+                'uvdomains': "OFF",
+                'nsubdomains': 0,
+                'unsubdomains': "OFF",
+                'ips': 0,
+                'nemails': 0,
+                'unemails': "OFF",
+                'nemailf': 0,
+                'unemailf': "OFF",
+                'nemailml': 0,
+                'unemailml': "OFF",
+                'nemailr': 0,
+                'unemailr': "OFF",
+                'mysql': 0,
+                'umysql': "OFF",
+                'domainptr': 0,
+                'udomainptr': "OFF",
+                'ftp': 0,
+                'uftp': "OFF",
+                'aftp': "OFF",
+                'php': "ON",
+                'cgi': "ON",
+                'ssl': "OFF",
+                'ssh': "OFF",
+                'userssh': "OFF",
+                'dnscontrol': "OFF",
+                'dns': "OFF",
                 'serverip': "OFF"}
-    
+
 class EndUser (User):
     """EndUser
 
@@ -273,21 +273,21 @@ class EndUser (User):
     Usage:
 
     # Define an End User with a package
-    user = EndUser('username', 
-                   'email@domain.com', 
-                   'password', 
-                   'domain.com', 
-                   'package_1', 
+    user = EndUser('username',
+                   'email@domain.com',
+                   'password',
+                   'domain.com',
+                   'package_1',
                    '65.65.65.65')
 
     OR
 
     # Define an End User with a custom configuration
-    user = EndUser('username', 
-                   'email@domain.com', 
-                   'password', 
-                   'domain.com', 
-                   None, 
+    user = EndUser('username',
+                   'email@domain.com',
+                   'password',
+                   'domain.com',
+                   None,
                    '65.65.65.65')
     reseller['bandwidth'] = 1024
     reseller['ubandwidth'] = "OFF"
@@ -300,13 +300,13 @@ class EndUser (User):
         domain          -- A valid domain name in the form: domain.com
         package         -- One of the User packages created by the Reseller
                            (default: None)
-        ip              -- One of the ips which is available for user creation. 
+        ip              -- One of the ips which is available for user creation.
                            Only free or shared ips are allowed.
 
-        bandwidth       -- Amount of bandwidth User will be allowed to use. 
+        bandwidth       -- Amount of bandwidth User will be allowed to use.
                            Number, in Megabytes
         ubandwidth      -- ON or OFF. If ON, bandwidth is ignored and no limit is set
-        quota           -- Amount of disk space User will be allowed to use. 
+        quota           -- Amount of disk space User will be allowed to use.
                            Number, in Megabytes
         uquota          -- ON or OFF. If ON, quota is ignored and no limit is set
         vdomains        -- Number of domains the User will be allowed to create
@@ -327,26 +327,26 @@ class EndUser (User):
         udomainptr      -- ON or OFF Unlimited option for domainptr
         ftp             -- Number of ftp accounts the User will be allowed to create
         uftp            -- ON or OFF Unlimited option for ftp
-        aftp            -- ON or OFF If ON, the User will 
+        aftp            -- ON or OFF If ON, the User will
                            be able to have anonymous ftp accounts.
-        cgi             -- ON or OFF If ON, the User will 
+        cgi             -- ON or OFF If ON, the User will
                            have the ability to run cgi scripts in their cgi-bin.
-        php             -- ON or OFF If ON, the User will 
+        php             -- ON or OFF If ON, the User will
                            have the ability to run php scripts.
-        spam            -- ON or OFF If ON, the User will 
+        spam            -- ON or OFF If ON, the User will
                            have the ability to run scan email with SpamAssassin.
-        cron            -- ON or OFF If ON, the User will 
+        cron            -- ON or OFF If ON, the User will
                            have the ability to creat cronjobs.
-        catchall        -- ON or OFF If ON, the User will 
-                           have the ability to enable and customize 
+        catchall        -- ON or OFF If ON, the User will
+                           have the ability to enable and customize
                            a catch-all email (*@domain.com).
-        ssl             -- ON or OFF If ON, the User will 
-                           have the ability to access their websites 
+        ssl             -- ON or OFF If ON, the User will
+                           have the ability to access their websites
                            through secure https://.
         ssh             -- ON or OFF If ON, the User will have an ssh account.
-        sysinfo         -- ON or OFF If ON, the User will 
+        sysinfo         -- ON or OFF If ON, the User will
                            have access to a page that shows the system information.
-        dnscontrol      -- ON or OFF If ON, the User will 
+        dnscontrol      -- ON or OFF If ON, the User will
                            be able to modify his/her dns records.
     """
     def __init__ (self,  \
@@ -367,7 +367,7 @@ class EndUser (User):
         domain          -- A valid domain name in the form: domain.com
         package         -- One of the User packages created by the Reseller
                            (default: None)
-        ip              -- One of the ips which is available for user creation. 
+        ip              -- One of the ips which is available for user creation.
                            Only free or shared ips are allowed.
         """
         super(User, self).__init__(username, email, password)
@@ -380,41 +380,41 @@ class EndUser (User):
 
     def _get_default_config (self):
         """Get dafault config
-        
+
         Returns a dictionary with the default
         configuration for a reseller user
         """
-        return {'bandwidth': 0, 
-                'ubandwidth': "OFF", 
-                'quota': 0, 
-                'uquota': "OFF", 
-                'vdomains': 0, 
-                'uvdomains': "OFF", 
-                'nsubdomains': 0, 
-                'unsubdomains': "OFF", 
-                'nemails': 0, 
-                'unemails': "OFF", 
-                'nemailf': 0, 
-                'unemailf': "OFF", 
-                'nemailml': 0, 
-                'unemailml': "OFF", 
-                'nemailr': 0, 
-                'unemailr': "OFF", 
-                'mysql': 0, 
-                'umysql': "OFF", 
-                'domainptr': 0, 
-                'udomainptr': "OFF", 
-                'ftp': 0, 
-                'uftp': "OFF", 
-                'aftp': "OFF", 
-                'cgi': "ON", 
-                'php': "ON", 
-                'spam': "ON", 
-                'cron': "ON", 
-                'catchall': "OFF", 
-                'ssl': "OFF", 
-                'ssh': "OFF", 
-                'sysinfo': "OFF", 
+        return {'bandwidth': 0,
+                'ubandwidth': "OFF",
+                'quota': 0,
+                'uquota': "OFF",
+                'vdomains': 0,
+                'uvdomains': "OFF",
+                'nsubdomains': 0,
+                'unsubdomains': "OFF",
+                'nemails': 0,
+                'unemails': "OFF",
+                'nemailf': 0,
+                'unemailf': "OFF",
+                'nemailml': 0,
+                'unemailml': "OFF",
+                'nemailr': 0,
+                'unemailr': "OFF",
+                'mysql': 0,
+                'umysql': "OFF",
+                'domainptr': 0,
+                'udomainptr': "OFF",
+                'ftp': 0,
+                'uftp': "OFF",
+                'aftp': "OFF",
+                'cgi': "ON",
+                'php': "ON",
+                'spam': "ON",
+                'cron': "ON",
+                'catchall': "OFF",
+                'ssl': "OFF",
+                'ssh': "OFF",
+                'sysinfo': "OFF",
                 'dnscontrol': "OFF"}
 
 class ApiConnector (object):
@@ -555,7 +555,7 @@ class Api (object):
         """Constructor
 
         Initializes the connection for the API
-        
+
         Parameters:
         username -- Directadmin username
         password -- Directadmin password
@@ -743,7 +743,7 @@ class Api (object):
         Suspends a list of accounts of *ANY* type
 
         Parameters:
-        users -- list of names or User objects of the 
+        users -- list of names or User objects of the
                  Admins/Resellers/Users to suspend
         """
         return self._handle_suspensions(users, True)
@@ -769,7 +769,7 @@ class Api (object):
         Unsuspends a list of accounts of *ANY* type
 
         Parameters:
-        users -- list of names or User objects of the 
+        users -- list of names or User objects of the
                  Admins/Resellers/Users to suspend
         """
         return self._handle_suspensions(users, False)
@@ -779,8 +779,8 @@ class Api (object):
 
         Implements command CMD_API_CHANGE_INFO
 
-        Updates the email address for the logged user. 
-        This does not affect the email address for the 
+        Updates the email address for the logged user.
+        This does not affect the email address for the
         ticketing/messaging system.
 
         Parameteres:
@@ -860,7 +860,7 @@ class Api (object):
         """
         # Execute command
         stats = self._execute_cmd("CMD_API_ADMIN_STATS")
-        
+
         # Split disk info
         options = ['filesystem', \
                    'blocks', \
@@ -1015,7 +1015,7 @@ class Api (object):
         Parameters:
         domain -- main domain
         subdomain -- subdomain to delete
-        remove_contents -- boolean, if True the directory 
+        remove_contents -- boolean, if True the directory
                            and its contents will be removed
                            Default: False
         """
@@ -1077,7 +1077,7 @@ class Api (object):
             parameters.append(('selected0', dbs))
 
         return self._execute_cmd("CMD_API_DATABASES", parameters)
-    
+
     def update_pop_password (self, email, old_password, new_password):
         """Update POP password
 
@@ -1156,7 +1156,7 @@ class Api (object):
                       ('domain', domain), \
                       ('user', user)]
         return self._execute_cmd("CMD_API_POP", parameters)
-    
+
     def check_pop_password (self, email, password):
         """Check POP password
 
@@ -1174,7 +1174,7 @@ class Api (object):
                       ('passwd', password)]
 
         return self._execute_cmd("CMD_API_EMAIL_AUTH", parameters)
-    
+
     def get_pop_vacation (self, domain, user):
         """Get vacation details
 
@@ -1192,7 +1192,7 @@ class Api (object):
                       ('user', user)]
 
         return self._execute_cmd("CMD_API_EMAIL_VACATION_MODIFY", parameters)
-    
+
     def list_pop_vacations (self, domain):
         """List vacations
 
@@ -1208,7 +1208,7 @@ class Api (object):
         parameters = [('domain', domain)]
 
         return self._execute_cmd("CMD_API_EMAIL_VACATION", parameters)
-    
+
     def create_pop_vacation (self, domain, user, text, \
                              startyear, startmonth, startday, starttime, \
                              endyear, endmonth, endday, endtime):
@@ -1226,7 +1226,7 @@ class Api (object):
         user -- email username (what comes before the @)
         text -- vacation message
         startyear -- 4-digit year
-        startmonth -- 2-digit month (01-12) 
+        startmonth -- 2-digit month (01-12)
         startday -- 2-digit day (01-31)
         starttime -- morning|afternoon|evening
         endyear -- 4-digit year
@@ -1247,7 +1247,7 @@ class Api (object):
                       ('endday', endday), \
                       ('endtime', endtime) ]
         return self._execute_cmd("CMD_API_EMAIL_VACATION", parameters)
-    
+
     def update_pop_vacation (self, domain, user, text, \
                              startyear, startmonth, startday, starttime, \
                              endyear, endmonth, endday, endtime):
@@ -1265,7 +1265,7 @@ class Api (object):
         user -- email username (what comes before the @)
         text -- vacation message
         startyear -- 4-digit year
-        startmonth -- 2-digit month (01-12) 
+        startmonth -- 2-digit month (01-12)
         startday -- 2-digit day (01-31)
         starttime -- morning|afternoon|evening
         endyear -- 4-digit year
@@ -1286,7 +1286,7 @@ class Api (object):
                       ('endday', endday), \
                       ('endtime', endtime) ]
         return self._execute_cmd("CMD_API_EMAIL_VACATION", parameters)
-    
+
     def delete_pop_vacation (self, domain, user):
         """Delete POP vacation
 
