@@ -945,7 +945,7 @@ class Api(object):
         Method info: http://www.directadmin.com/api.html#info
         """
         return self._execute_cmd("CMD_API_SHOW_USER_DOMAINS", \
-                                 [('user', user)])
+                                 get=[('user', user)])
 
     def list_reseller_packages(self):
         """List Reseller Packages
