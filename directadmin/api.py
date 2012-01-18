@@ -491,8 +491,8 @@ class ApiConnector(object):
         """
         url = self._get_url(cmd)
 
-        if get:
-            url += '?' + urllib.urlencode(get)
+        if get is not None:
+            url = '%s?%s' % (url, urllib.urlencode(get))
 
         if parameters is not None:
             parameters = urllib.urlencode(parameters)
@@ -548,6 +548,18 @@ class ApiConnector(object):
         info = response.info()
         if info.getheader('X-DirectAdmin') == 'unauthorized':
             raise ApiError("Invalid username or password")
+
+        # If we're getting HTML content we'll search for known
+        # error messages.
+        if info.getheader('Content-Type') == 'text/html':
+            errors = ['You cannot execute that command']
+            response = response.read()
+            for msg in errors:
+                if response.find(msg) > -1:
+                    raise ApiError(msg)
+            # If we don't find any known error messages,
+            # we exit anyway, because we can't handle this
+            raise ApiError('Got unexpected HTML response from server')
 
         # Parse the response query string
         response = urlparse.parse_qs(response.read())
@@ -1206,7 +1218,6 @@ class Api(object):
         """
         parameters = [('email', email), \
                       ('passwd', password)]
-
         return self._execute_cmd("CMD_API_EMAIL_AUTH", parameters)
 
     def get_pop_vacation(self, domain, user):
@@ -1224,7 +1235,6 @@ class Api(object):
         """
         parameters = [('domain', domain), \
                       ('user', user)]
-
         return self._execute_cmd("CMD_API_EMAIL_VACATION_MODIFY", parameters)
 
     def list_pop_vacations(self, domain):
@@ -1240,7 +1250,6 @@ class Api(object):
         domain -- email domain
         """
         parameters = [('domain', domain)]
-
         return self._execute_cmd("CMD_API_EMAIL_VACATION", parameters)
 
     def create_pop_vacation(self, domain, user, text, \
